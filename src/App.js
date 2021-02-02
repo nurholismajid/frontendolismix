@@ -23,7 +23,7 @@ class App extends Component  {
   }
 
   async componentDidMount() {
-    const baseurl = 'http://45.82.73.5:1337';
+    const baseurl = 'http://127.0.0.1:1337';
 
     await Api.get('website-identity')
   .then(res => {

@@ -52,7 +52,7 @@ class Profil extends Component  {
 
         return(
           <div key={image.id}>
-            <img className="img-profil" src={'http://45.82.73.5:1337'+image.formats.small.url} alt="" />
+            <img className="img-profil" src={'http://127.0.0.1:1337'+image.formats.small.url} alt="" />
           </div>
           )
         })
