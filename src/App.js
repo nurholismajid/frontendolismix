@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import baseurl from './services/baseurl';
 import './App.css';
 import HeaderDesktop from './component/headerdesktop';
 import HeaderMobile from './component/headermobile';
@@ -23,39 +24,57 @@ class App extends Component  {
   }
 
   async componentDidMount() {
-    const baseurl = 'http://127.0.0.1:1337';
-
-    await Api.get('website-identity')
-  .then(res => {
-    const identity = res.data;
-    const dataidentity =  {
-      title: identity.Title,
-      headline: identity.Headline,
-      facebook: identity.Facebook,
-      instagram: identity.Instagram,
-      youtube: identity.Youtube,
-      logo: baseurl+identity.Logo.formats.small.url,
-      icon: baseurl+identity.Icon.formats.small.url,
+    await Api.get('?rest_route=/acf/v3/options/option/')
+    .then(res => {
       
-    }
-    console.log(dataidentity);
-    this.props.updatewebidentity(dataidentity);
-  })
-    Api.get('beranda-website')
-        .then(res => {
-          const beranda = res.data;
-          const databeranda ={
-            titlebutton: beranda.TitleButton,
-            description: beranda.Description,
-            bannervideo: baseurl+beranda.BannerVideo.url,
-            profile: baseurl+beranda.Profile.formats.small.url,
+      const data = res.data.acf;
+      console.log(data)
+
+      const dataidentity = data.identitas_website;
+      const databeranda = data.beranda_website;
+      const mybiodata = data.my_biodata;
+      console.log(databeranda);
+       this.props.updatewebidentity(dataidentity);
+       sessionStorage.setItem('videostate', databeranda.banner_video);
+       this.props.updateberandawebsite(databeranda);
+       this.props.updategaleri(mybiodata.galeri_foto);
+       this.props.updatebiodata(mybiodata.biodata);
+       this.props.updatependidikan(mybiodata.pendidikan);
+       this.props.updatepekerjaan(mybiodata.pekerjaan);
+    })
+    
+    
+  //   Api.get('website-identity')
+  // .then(res => {
+  //   const identity = res.data;
+  //   const dataidentity =  {
+  //     title: identity.Title,
+  //     headline: identity.Headline,
+  //     facebook: identity.Facebook,
+  //     instagram: identity.Instagram,
+  //     youtube: identity.Youtube,
+  //     logo: baseurl+identity.Logo.formats.small.url,
+  //     icon: baseurl+identity.Icon.formats.small.url,
+      
+  //   }
+  //   console.log(dataidentity);
+  //   this.props.updatewebidentity(dataidentity);
+  // })
+    // Api.get('beranda-website')
+    //     .then(res => {
+    //       const beranda = res.data;
+    //       const databeranda ={
+    //         titlebutton: beranda.TitleButton,
+    //         description: beranda.Description,
+    //         bannervideo: baseurl+beranda.BannerVideo.url,
+    //         profile: baseurl+beranda.Profile.formats.small.url,
               
-          }
-          sessionStorage.setItem('videostate', baseurl+beranda.BannerVideo.url);
+    //       }
+    //       sessionStorage.setItem('videostate', baseurl+beranda.BannerVideo.url);
 
-    this.props.updateberandawebsite(databeranda);
+    // this.props.updateberandawebsite(databeranda);
 
-        })
+    //     })
 
         Api.get('video-youtubes')
         .then(res => {

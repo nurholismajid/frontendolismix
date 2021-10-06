@@ -52,29 +52,29 @@ class Profil extends Component  {
 
         return(
           <div key={image.id}>
-            <img className="img-profil" src={'http://127.0.0.1:1337'+image.formats.small.url} alt="" />
+            <img className="img-profil" src={image.image} alt="" />
           </div>
           )
         })
-
+        var nopend = 0;
         const looppendidikan = this.props.pendidikan.map(pendidikan=>{
-
+          nopend++;
           return(
-                            <div key={pendidikan.id} className="item">
+                            <div key={nopend} className="item">
                               <div className="row">
                                   <div className="col-md-6">
-                                      <h3>{pendidikan.Jenjang}</h3>
+                                      <h3>{pendidikan.jenjang}</h3>
                                   </div>
-                                  <div className="col-md-6"><span className="period">{pendidikan.TahunMasuk} - {pendidikan.TahunLulus}</span></div>
+                                  <div className="col-md-6"><span className="period">{pendidikan.tahun_masuk} - {pendidikan.tahun_lulus}</span></div>
                               </div>
-                              <h4 className="organization">{pendidikan.NamaSekolah}</h4>
-                              <p className="text-muted">{pendidikan.Description}</p>
+                              <h4 className="organization">{pendidikan.nama_sekolah}</h4>
+                              <p className="text-muted">{pendidikan.description}</p>
                             </div>
             )
           })
-
+          var nopeK = 0;
           const looppekerjaan = this.props.pekerjaan.map(pekerjaan=>{
-             
+            nopeK++;
               if(pekerjaan.TahunKeluar == null){
                 var keluar = "Sekarang";
               }else{
@@ -82,15 +82,15 @@ class Profil extends Component  {
               }
 
             return(
-              <div key={pekerjaan.id} className="item">
+              <div key={nopeK} className="item">
               <div className="row">
                   <div className="col-md-6">
-                      <h3>{pekerjaan.Profesi}</h3>
-            <h4 className="organization">{pekerjaan.NamaPerusahan}</h4>
+                      <h3>{pekerjaan.profesi}</h3>
+            <h4 className="organization">{pekerjaan.nama_perusahan}</h4>
                   </div>
-                  <div className="col-md-6"><span className="period">{pekerjaan.TahunMasuk} - {keluar}</span></div>
+                  <div className="col-md-6"><span className="period">{pekerjaan.tahun_masuk} - {keluar}</span></div>
               </div>
-              <div className="text-muted">{pekerjaan.Deescription}</div>
+              <div className="text-muted">{pekerjaan.deskripsi}</div>
           </div>
 
               )
@@ -102,7 +102,7 @@ class Profil extends Component  {
       <div id="profil" className="portfolio-block website gradient">
       <div data-aos="fade-down" className="container">
           <div className="heading">
-              <h2>Profil</h2>
+              <h2>Profile</h2>
           </div>
           <div data-aos="fade-up" className="row">
 
@@ -133,34 +133,34 @@ class Profil extends Component  {
                           <div className="item">
                               <div className="row">
                                   <div className="col-12">
-                                      <h3>{this.props.biodata.NamaLengkap}</h3>
+                                      <h3>{this.props.biodata.nama_lengkap}</h3>
                                   </div>
                                   <table className="table-biodata">
                                       <tbody>
                                       <tr>
                                           <td width="40%">Tempat & tanggal lahir</td>
                                           <td>:</td>
-                                          <td>{this.props.biodata.TempatTanggalLahir}</td>
+                                          <td>{this.props.biodata.tempat_tanggal_lahir}</td>
                                       </tr>
                                       <tr>
                                           <td width="40%">Pendidikan Terakhir</td>
                                           <td>:</td>
-                                          <td>{this.props.biodata.PendidikanTerakhir}</td>
+                                          <td>{this.props.biodata.pendidikan_terakhir}</td>
                                       </tr>
                                       <tr>
                                           <td width="40%">E-mail</td>
                                           <td>:</td>
-                                          <td>{this.props.biodata.Email}</td>
+                                          <td>{this.props.biodata.email}</td>
                                       </tr>
                                       <tr>
                                           <td width="40%">Telepon / Ponsel</td>
                                           <td>:</td>
-                                          <td>{this.props.biodata.Telepon}</td>
+                                          <td>{this.props.biodata.telepon}</td>
                                       </tr>
                                       <tr>
                                           <td width="40%">Alamat</td>
                                           <td>:</td>
-                                          <td>{this.props.biodata.Alamat}</td>
+                                          <td>{this.props.biodata.alamat}</td>
                                       </tr>
                                       </tbody>
                                   </table>

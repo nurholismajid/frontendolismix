@@ -33,10 +33,10 @@ class Beranda extends Component  {
           <source type="video/mp4" src={sessionStorage.getItem('videostate')} />
         </video>
       <div className="container-header">
-          <div data-aos="fade-down" className="avatar"><img src={this.props.beranda.profile}/></div>
+          <div data-aos="fade-down" className="avatar"><img src={this.props.beranda.foto_profile}/></div>
           <div data-aos="fade-up" className="about-me">
-              <p>{this.props.beranda.description}</p><a className="btn btn-outline-primary" role="button" data-toggle="modal"
-                  data-target="#hubungisaya" href="#">{this.props.beranda.titlebutton}</a></div>
+              <p>{this.props.beranda.deskripsi}</p><a className="btn btn-outline-primary" role="button" data-toggle="modal"
+                  data-target="#hubungisaya" href="#">{this.props.beranda.title_button}</a></div>
       </div>
   </div>
     

@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import baseurl from './baseurl';
 export default Axios.create({
-baseURL : "http://127.0.0.1:1337/"
+baseURL : baseurl
 })

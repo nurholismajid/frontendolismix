@@ -20,9 +20,9 @@ class HeaderDesktop extends Component  {
 
     return(
       <div>
-        <title>{this.props.identity.title} | {this.props.identity.headline}</title>
+        <title>{this.props.identity.title_website} | {this.props.identity.tagline_website}</title>
         <nav data-aos="fade-in" className="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-        <div className="container"><a className="navbar-brand logo animated infinite flash slower" href="#"><img className="logo-img" src={this.props.identity.logo}/></a><button className="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
+        <div className="container"><a className="navbar-brand logo animated infinite flash slower" href="#"><img className="logo-img" src={this.props.identity.logo_website}/></a><button className="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span className="sr-only">Toggle navigation</span><span className="navbar-toggler-icon"></span></button>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="nav navbar-nav ml-auto">
                     <li className="nav-item" data-aos="fade-up" role="presentation"><Scrollchor className="nav-link active"  to="#beranda"><i className="fas fa-home"></i> Beranda</Scrollchor></li>
