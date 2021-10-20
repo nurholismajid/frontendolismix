@@ -1,1 +1,1 @@
-export default "http://185.210.144.103/dashboardolismix/";
+export default "http://api.olismix.com/";

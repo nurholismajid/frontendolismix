@@ -44,6 +44,8 @@ class Keahlian extends Component  {
         slidesToShow: itemslide,
         slidesToScroll: itemslide
       };
+      
+      console.log(this.props.keahlian)
 
       const loopdataslider = this.props.keahlian.map(keeahlian=>{
 
@@ -51,16 +53,16 @@ class Keahlian extends Component  {
                                 
                     <div key={keeahlian.id}>
                         <div className="card special-skill-item border-0">
-                        <div className="card-header bg-transparent border-0"><i className="icon ion-ios-lightbulb-outline"></i></div>
-                            <div className="card-header bg-transparent border-0"><h3 className="card-title">{keeahlian.Title}</h3></div>
+                        <div className="card-header bg-transparent border-0"><img style={{width:"40%", margin:"auto"}} src={keeahlian.acf.icon}/></div>
+                            <div className="card-header bg-transparent border-0"><h3 className="card-title">{keeahlian.title.rendered}</h3></div>
                             <div className="card-body">
-                            <p className="card-text">{keeahlian.Descriptions}</p>
+                            <p className="card-text">{keeahlian.acf.deskripsi}</p>
                             <p className="card-text"><b>Spesifikasi :</b></p>
                                 <p className="card-text">
                                   {
-                                   keeahlian.Spesifikasi.map(spesifikasi=>{
+                                   keeahlian.acf.spesifikasi.map(spesifikasi=>{
                                       return(
-                                        <span key={spesifikasi.id}>{spesifikasi.TitleSpesifikasi}, </span>
+                                        <span>{spesifikasi.title_}, </span>
                                       )
                                    })
                                   }  

@@ -28,12 +28,9 @@ class App extends Component  {
     .then(res => {
       
       const data = res.data.acf;
-      console.log(data)
-
       const dataidentity = data.identitas_website;
       const databeranda = data.beranda_website;
       const mybiodata = data.my_biodata;
-      console.log(databeranda);
        this.props.updatewebidentity(dataidentity);
        sessionStorage.setItem('videostate', databeranda.banner_video);
        this.props.updateberandawebsite(databeranda);
@@ -43,73 +40,19 @@ class App extends Component  {
        this.props.updatepekerjaan(mybiodata.pekerjaan);
     })
     
-    
-  //   Api.get('website-identity')
-  // .then(res => {
-  //   const identity = res.data;
-  //   const dataidentity =  {
-  //     title: identity.Title,
-  //     headline: identity.Headline,
-  //     facebook: identity.Facebook,
-  //     instagram: identity.Instagram,
-  //     youtube: identity.Youtube,
-  //     logo: baseurl+identity.Logo.formats.small.url,
-  //     icon: baseurl+identity.Icon.formats.small.url,
-      
-  //   }
-  //   console.log(dataidentity);
-  //   this.props.updatewebidentity(dataidentity);
-  // })
-    // Api.get('beranda-website')
-    //     .then(res => {
-    //       const beranda = res.data;
-    //       const databeranda ={
-    //         titlebutton: beranda.TitleButton,
-    //         description: beranda.Description,
-    //         bannervideo: baseurl+beranda.BannerVideo.url,
-    //         profile: baseurl+beranda.Profile.formats.small.url,
-              
-    //       }
-    //       sessionStorage.setItem('videostate', baseurl+beranda.BannerVideo.url);
+    Api.get('?rest_route=/wp/v2/bidang-keahlian')
+    .then(res => {
+      this.props.updatekeahlian(res.data);
+    })
 
-    // this.props.updateberandawebsite(databeranda);
-
-    //     })
-
-        Api.get('video-youtubes')
+    Api.get('?rest_route=/wp/v2/youtube')
+    .then(res => {
+      this.props.updateyoutube(res.data);
+    })
+    Api.get('?rest_route=/wp/v2/projek/')
         .then(res => {
-          const youtube = res.data;       
-          this.props.updateyoutube(youtube)
-
-        })
-        Api.get('bidang-dan-keahlians')
-        .then(res => {
-          const keahlian = res.data;       
-          this.props.updatekeahlian(keahlian);
-
-        })
-
-        Api.get('profil-saya')
-        .then(res => {
-          const profil = res.data; 
-          const dataprofile = profil.GaleriFoto.GaleriFoto;
-          const databiodata = profil.Biodata;
-          const datapendidikan = profil.Pendidikan;
-          const datapekerjaan = profil.Pekerjaan;      
-          this.props.updategaleri(dataprofile);
-          this.props.updatebiodata(databiodata);
-          this.props.updatependidikan(datapendidikan);
-          this.props.updatepekerjaan(datapekerjaan);
-
-        })
-
-        Api.get('portofolios')
-        .then(res => {
-          const portofolio = res.data; 
-          
-          this.props.updateportofolio(portofolio);
-
-        })
+          this.props.updateportofolio(res.data);
+    })
 
  
  // document.addEventListener("contextmenu", function(e){e.preventDefault();}, false);

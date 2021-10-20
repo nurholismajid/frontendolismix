@@ -65,15 +65,15 @@ class Youtube extends Component  {
                                 <div key={youtube.id}>
                                   <div className="cardvideo">
                                       <div className="thumnail">
-                                          <img src={'http://45.82.73.5:1337'+youtube.Cover.formats.small.url} alt="" className="covervideo" />
-                                          <button onClick={()=>this.openModal(youtube.IDVideo)}  className="btnplay youtube-link">
+                                          <img src={youtube.acf.thumbnail} alt="" className="covervideo" />
+                                          <button onClick={()=>this.openModal(youtube.acf.id_video)}  className="btnplay youtube-link">
                                               <center><i className="fas fa-play-circle"></i></center>
                                           </button>
                                       </div>
                                       <div className="contentvideo">
-                                          <h3 className="titlevideo">{youtube.Title.substring(0, 18)}</h3>
+                                          <h3 className="titlevideo">{youtube.Title}</h3>
                                           <p className="descriptionvideo">
-                                              <span><a href={youtube.UrlChanel}><i className="fab fa-youtube"></i> {youtube.ChanelName}</a></span><span><i className="fas fa-calendar-alt"></i> {youtube.created_at.substring(0,10)}</span>
+                                              <span><a href={youtube.acf.url_chanel}><i className="fab fa-youtube"></i> {youtube.acf.nama_chanel}</a></span><span><i className="fas fa-calendar-alt"></i> {youtube.date.substring(0,10)}</span>
                                           </p>
                                       </div>
                                   </div>
@@ -87,15 +87,15 @@ class Youtube extends Component  {
                                     <div key={youtube.id} className="col-sm-6 col-md-6 col-lg-3 col-video">
                                       <div className="cardvideo">
                                           <div className="thumnail">
-                                              <img src={'http://45.82.73.5:1337'+youtube.Cover.formats.small.url} alt="" className="covervideo" />
-                                              <button onClick={()=>this.openModal(youtube.IDVideo)}  className="btnplay youtube-link">
-                                                  <center><i className="fas fa-play-circle"></i></center>
-                                              </button>
+                                          <img src={youtube.acf.thumbnail} alt="" className="covervideo" />
+                                          <button onClick={()=>this.openModal(youtube.acf.id_video)}  className="btnplay youtube-link">
+                                              <center><i className="fas fa-play-circle"></i></center>
+                                          </button>
                                           </div>
                                           <div className="contentvideo">
-                                              <h3 className="titlevideo">{youtube.Title.substring(0, 18)}</h3>
+                                              <h3 className="titlevideo">{youtube.Title}</h3>
                                               <p className="descriptionvideo">
-                                                  <span><a href={youtube.UrlChanel}><i className="fab fa-youtube"></i> {youtube.ChanelName}</a></span><span><i className="fas fa-calendar-alt"></i> {youtube.created_at.substring(0,10)}</span>
+                                                  <span><a href={youtube.acf.url_chanel}><i className="fab fa-youtube"></i> {youtube.acf.nama_chanel}</a></span><span><i className="fas fa-calendar-alt"></i> {youtube.date.substring(0,10)}</span>
                                               </p>
                                           </div>
                                       </div>

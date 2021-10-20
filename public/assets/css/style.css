@@ -414,7 +414,7 @@ p.card-text span {
 .portfolio-laptop-mockup .screen .screen-content {
     border: 1px solid #c5c5c5;
     background-position: 50%;
-    background-size: cover;
+    background-size: auto 100% !important;
     height: 100%;
     background-position: center top !important;
 }
@@ -497,10 +497,29 @@ option {
     z-index: 1;
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
+    border: 1px solid #c5c5c5;
+    background-position: 50%;
+    background-size: auto 100% !important;
+    height: 100%;
+    background-position: center top !important;
 }
 
+p.card-text span {
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.special-skill-item {
+    margin-bottom: 30px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 4px 5px 6px #f4f4f4;
+}
 
 @media only screen and (max-width: 991px) {
+    .col-md-12.col-lg-6.colprofil.aos-init.aos-animate {
+        margin-top: 100px;
+    }
     a.gotoup{
         display: none !important;
     }

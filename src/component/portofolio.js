@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Galeriproject from "simple-react-lightbox";
 import { SRLWrapper } from "simple-react-lightbox";
+import parse from "html-react-parser";
 class Portofolio extends Component  {
 
   constructor(props) {
@@ -51,14 +52,13 @@ class Portofolio extends Component  {
 
      const loopdataslider = this.props.portofolio.map(portofolio=>{
 
-        const background = "http://45.82.73.5:1337" + portofolio.Cover.formats.small.url;
-
+   
         return(
         <div key={portofolio.id}>
           <div className="row align-items-center">
               <div className="col-md-12 col-lg-5 offset-lg-1 text">
-              <h3>{portofolio.NameProjek}</h3>
-              <p>{portofolio.SortDescription}</p>
+              <h3>{portofolio.title.rendered}</h3>
+              <p>{portofolio.acf.sort_description}</p>
                   <button type="button" className="btn btn-outline-primary" data-toggle="modal" data-target={'#proj'+ portofolio.id}>
                   Selengkapnya
                   </button>
@@ -66,7 +66,7 @@ class Portofolio extends Component  {
               <div className="col-md-12 col-lg-5">
                   <div className="portfolio-laptop-mockup">
                       <div className="screen">
-                          <div className="screen-content" style={{background:"url('"+ background+"')"}} ></div>
+                          <div className="screen-content" style={{background:"url('"+portofolio.acf.cover+"')"}} ></div>
                       </div>
                       <div className="keyboard"></div>
                   </div>
@@ -80,13 +80,13 @@ class Portofolio extends Component  {
 
         const loopmodal = this.props.portofolio.map(portofolio=>{
 
-          console.log(portofolio.GaleriProjek.GaleriFoto)
-          const loopgaleri = portofolio.GaleriProjek.GaleriFoto.map(galeri=>{
+           console.log(portofolio.acf.gallery)
+          const loopgaleri = portofolio.acf.gallery.map(galeri=>{
 
                                             return(
 
                                               <div key={galeri.id} className="col-6">
-                                                <img src={"http://45.82.73.5:1337" + galeri.url} className="img-project" alt="" />
+                                                <img src={galeri.image} className="img-project" alt="" />
                                               </div>
                                               
                                             )
@@ -99,7 +99,7 @@ class Portofolio extends Component  {
                           <div className="modal-dialog" role="document">
                             <div className="modal-content">
                               <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">{portofolio.NameProjek}</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">{portofolio.title.rendered}</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -114,7 +114,7 @@ class Portofolio extends Component  {
                                 <div className="tab-content" id="nav-tabContent">
                                   <div className="tab-pane fade show active" id="description2" role="tabpanel" aria-labelledby="nav-profile-tab">
                                     <div className="description-project">
-                                        <p>{portofolio.FullDescription}</p>
+                                        {parse(portofolio.acf.descriptions)}
                                     </div>
                                   </div>
                                   <div className="tab-pane fade" id="tampilan2" role="tabpanel" aria-labelledby="nav-home-tab">
