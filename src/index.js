@@ -15,6 +15,7 @@ const globalState = {
   datapendidikan:[],
   datapekerjaan:[],
   dataportofolio:[],
+  datasosmed:[],
 }
 
 const rootReducer = (state = globalState, action) => {
@@ -79,6 +80,13 @@ const rootReducer = (state = globalState, action) => {
     return{
       ... state,
       dataportofolio:action.dataportofolio
+    } 
+  }
+
+  if(action.type === 'UPDATESOSMED'){
+    return{
+      ... state,
+      datasosmed:action.datasosmed
     } 
   }
 

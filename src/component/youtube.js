@@ -73,7 +73,7 @@ class Youtube extends Component  {
                                       <div className="contentvideo">
                                           <h3 className="titlevideo">{youtube.Title}</h3>
                                           <p className="descriptionvideo">
-                                              <span><a href={youtube.acf.url_chanel}><i className="fab fa-youtube"></i> {youtube.acf.nama_chanel}</a></span><span><i className="fas fa-calendar-alt"></i> {youtube.date.substring(0,10)}</span>
+                                              <span><a href={youtube.acf.url_chanel}><i className="fab fa-youtube"></i> {youtube.acf.nama_chanel}</a></span><span><i className="fas fa-calendar-alt"></i> {youtube.created.substring(0,10)}</span>
                                           </p>
                                       </div>
                                   </div>
@@ -95,7 +95,7 @@ class Youtube extends Component  {
                                           <div className="contentvideo">
                                               <h3 className="titlevideo">{youtube.Title}</h3>
                                               <p className="descriptionvideo">
-                                                  <span><a href={youtube.acf.url_chanel}><i className="fab fa-youtube"></i> {youtube.acf.nama_chanel}</a></span><span><i className="fas fa-calendar-alt"></i> {youtube.date.substring(0,10)}</span>
+                                                  <span><a href={youtube.acf.url_chanel}><i className="fab fa-youtube"></i> {youtube.acf.nama_chanel}</a></span><span><i className="fas fa-calendar-alt"></i> {youtube.created.substring(0,10)}</span>
                                               </p>
                                           </div>
                                       </div>

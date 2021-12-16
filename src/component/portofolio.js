@@ -107,17 +107,17 @@ class Portofolio extends Component  {
                               <div className="modal-body">
                                 <nav>
                                   <div className="nav nav-tabs modaltab" id="nav-tab2" role="tablist">
-                                    <a className="nav-item nav-link modaltab active" id="nav-profile-tab" data-toggle="tab" href="#description2" role="tab" aria-controls="nav-profile" aria-selected="false">Deskripsi</a>
-                                    <a className="nav-item nav-link modaltab" id="nav-home-tab" data-toggle="tab" href="#tampilan2" role="tab" aria-controls="nav-home" aria-selected="true">Tampilan</a>
+                                    <a className="nav-item nav-link modaltab active" id="nav-profile-tab" data-toggle="tab" href={'#description'+ portofolio.id} role="tab" aria-controls="nav-profile" aria-selected="false">Deskripsi</a>
+                                    <a className="nav-item nav-link modaltab" id="nav-home-tab" data-toggle="tab" href={'#tampilan'+ portofolio.id} role="tab" aria-controls="nav-home" aria-selected="true">Tampilan</a>
                                   </div>
                                 </nav>
                                 <div className="tab-content" id="nav-tabContent">
-                                  <div className="tab-pane fade show active" id="description2" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                  <div className="tab-pane fade show active" id={'description'+ portofolio.id} role="tabpanel" aria-labelledby="nav-profile-tab">
                                     <div className="description-project">
                                         {parse(portofolio.acf.descriptions)}
                                     </div>
                                   </div>
-                                  <div className="tab-pane fade" id="tampilan2" role="tabpanel" aria-labelledby="nav-home-tab">
+                                  <div className="tab-pane fade" id={'tampilan'+ portofolio.id} role="tabpanel" aria-labelledby="nav-home-tab">
                                     
                                     <SRLWrapper>
                                     <div className="row galley-detail">

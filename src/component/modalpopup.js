@@ -27,13 +27,25 @@ class ModalPopup extends Component  {
 } 
 handleSubmit = (e) => {
     const data = {
-      Subjek : this.state.subject,
-      Email : this.state.email,
-      Tanggal: this.state.date,
-      Pesan: this.state.message
+      title: this.state.subject + this.state.date,
+      status: "publish",
+      acf: {
+      subject: this.state.subject,
+      emai: this.state.email,
+      tanggal: this.state.date,
+      pesan: this.state.message
+      }
     }
 
-    Api.post('contacts',data)
+    const config = {
+      headers: { 
+        'Content-Type': 'application/json', 
+        'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90ZXN0ZGV2ZWxvcC50ZXN0IiwiaWF0IjoxNjM5NjU3MTEwLCJuYmYiOjE2Mzk2NTcxMTAsImV4cCI6MTY0MDI2MTkxMCwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.DzGuIef8_8fYWbWS_zAw3rShT1H7X0Fs2-O7ewtaSWc'
+      }
+
+    }
+
+    Api.post('wp-json/wp/v2/pesan',data,config)
           .then(res => {
             this.funswal("Sukses","Pesan Terkirim","success");
     })   

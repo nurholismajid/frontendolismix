@@ -24,32 +24,62 @@ class App extends Component  {
   }
 
   async componentDidMount() {
-    await Api.get('?rest_route=/acf/v3/options/option/')
-    .then(res => {
+    // await Api.get('?rest_route=/acf/v3/options/option/')
+    // .then(res => {
       
-      const data = res.data.acf;
-      const dataidentity = data.identitas_website;
-      const databeranda = data.beranda_website;
-      const mybiodata = data.my_biodata;
-       this.props.updatewebidentity(dataidentity);
-       sessionStorage.setItem('videostate', databeranda.banner_video);
-       this.props.updateberandawebsite(databeranda);
-       this.props.updategaleri(mybiodata.galeri_foto);
-       this.props.updatebiodata(mybiodata.biodata);
-       this.props.updatependidikan(mybiodata.pendidikan);
-       this.props.updatepekerjaan(mybiodata.pekerjaan);
+    //   const data = res.data.acf;
+    //   const dataidentity = data.identitas_website;
+    //   const databeranda = data.beranda_website;
+    //   const mybiodata = data.my_biodata;
+    //    this.props.updatewebidentity(dataidentity);
+    //    sessionStorage.setItem('videostate', databeranda.banner_video);
+    //    this.props.updateberandawebsite(databeranda);
+    //    this.props.updategaleri(mybiodata.galeri_foto);
+    //    this.props.updatebiodata(mybiodata.biodata);
+    //    this.props.updatependidikan(mybiodata.pendidikan);
+    //    this.props.updatepekerjaan(mybiodata.pekerjaan);
+    // })
+
+    await Api.get('?rest_route=/olismix/v1/identitas')
+    .then(res => {
+       
+      this.props.updatewebidentity(res.data);
+       
     })
     
-    Api.get('?rest_route=/wp/v2/bidang-keahlian')
+    Api.get('?rest_route=/olismix/v1/beranda')
+    .then(res => {
+      this.props.updateberandawebsite(res.data);
+      sessionStorage.setItem('videostate', res.data.banner_video);
+    })
+
+    Api.get('?rest_route=/olismix/v1/mybiodata')
+    .then(res => {
+      this.props.updategaleri(res.data.galeri_foto);
+      this.props.updatebiodata(res.data.biodata);
+      this.props.updatependidikan(res.data.pendidikan);
+      this.props.updatepekerjaan(res.data.pekerjaan);
+
+      const datasosmed ={
+        "facebook" : res.data.facebook,
+        "instagram" : res.data.instagram,
+        "youtube" : res.data.youtube,
+      }
+
+      this.props.updatesosmed(datasosmed);
+
+    })
+
+    Api.get('?rest_route=/olismix/v1/keahlian')
     .then(res => {
       this.props.updatekeahlian(res.data);
     })
 
-    Api.get('?rest_route=/wp/v2/youtube')
+    Api.get('?rest_route=/olismix/v1/youtube')
     .then(res => {
       this.props.updateyoutube(res.data);
     })
-    Api.get('?rest_route=/wp/v2/projek/')
+    Api.get('?rest_route=/olismix/v1/projek')
         .then(res => {
           this.props.updateportofolio(res.data);
     })
@@ -93,6 +123,8 @@ return{
   updatependidikan: (data) => dispatch({type:'UPDATEPENDIDIKAN',datapendidikan:data}),
   updatepekerjaan: (data) => dispatch({type:'UPDATEPEKERJAAN',datapekerjaan:data}),
   updateportofolio: (data) => dispatch({type:'UPDATEPORTOFOLIO',dataportofolio:data}),
+  updatesosmed: (data) => dispatch({type:'UPDATESOSMED',datasosmed:data}),
+
 }
 }
 

@@ -12,6 +12,7 @@ class Footer extends Component  {
 
 
   render(){  
+    console.log(this.props.sosmed)
     Aos.init({duration:2000});
     return(
         
@@ -26,7 +27,7 @@ class Footer extends Component  {
               
               <a  data-toggle="modal" data-target="#hubungisaya" href="#">Hubungi Saya</a>
           </div>
-          <div className="social-icons"><a href={this.props.identity.facebook}><i className="icon ion-social-facebook"></i></a><a href={this.props.identity.instagram}><i className="icon ion-social-instagram-outline"></i></a><a href={this.props.identity.youtube}><i className="icon ion-social-youtube"></i></a></div>
+          <div className="social-icons"><a href={this.props.sosmed.facebook}><i className="icon ion-social-facebook"></i></a><a href={this.props.sosmed.instagram}><i className="icon ion-social-instagram-outline"></i></a><a href={this.props.sosmed.youtube}><i className="icon ion-social-youtube"></i></a></div>
       </div>
   </footer>
    
@@ -36,7 +37,8 @@ class Footer extends Component  {
 
 const mapStatetoprops=(state)=>{
   return{
-    identity : state.datawebsiteidentity
+    identity : state.datawebsiteidentity,
+    sosmed : state.datasosmed
   }
 }
 
