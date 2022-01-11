@@ -45,7 +45,7 @@ handleSubmit = (e) => {
 
     }
 
-    Api.post('wp-json/wp/v2/pesan',data,config)
+    Api.post('?rest_route=/wp/v2/pesan',data,config)
           .then(res => {
             this.funswal("Sukses","Pesan Terkirim","success");
     })   

@@ -1,1 +1,1 @@
-export default "http://testdevelop.test/";
+export default "http://api.olismix.com/";
